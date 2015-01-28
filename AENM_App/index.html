@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>MEAN Application</title>
+
+    <link href="css/bootstrap.css" rel="stylesheet" />
+</head>
+<body ng-app="formExample">
+    <div class="container" ng-controller="ExampleController">
+        <form novalidate class="simple-form">
+            <h1>MEAN Application</h1>
+            Name: <input type="text" class="form-control" ng-model="user.name" /><br />
+            E-mail: <input type="email" class="form-control" ng-model="user.email" /><br />
+            Gender: <input type="radio" class="form-group" ng-model="user.gender" value="male" />male
+            <input type="radio" class="form-group" ng-model="user.gender" value="female" />female<br />
+            <input type="button" class="btn btn-primary" ng-click="reset()" value="Reset" />
+            <input type="submit" class="btn btn-primary" ng-click="update(user)" value="Save" />
+        </form>
+        <pre>form = {{user | json}}</pre>
+        <pre>master = {{master | json}}</pre>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
+    <script src="scripts/control.js"></script>
+</body>
+</html>
