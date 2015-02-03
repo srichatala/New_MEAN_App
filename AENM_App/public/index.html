@@ -1,0 +1,170 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.min.js"></script>
+    <script src="scripts/angular.min.js"></script>
+    <script src="scripts/app.js"></script>
+    <script src="scripts/script.js"></script>
+    <link href="styles/bootstrap.css" rel="stylesheet" />
+    <link href="styles/styles.css" rel="stylesheet" />
+</head>
+<body ng-app>
+    <div class="container" ng-controller="serverClients">
+        <img src="images/PatientInformation.png" width="100%" />
+        <div class="tabs">
+            <ul class="tab-links">
+                <li class="active"><a href="#tab1">Patient Form</a></li>
+                <li><a href="#tab2">Patients List</a></li>
+                <li><a href="#tab3">Patient Details</a></li>
+            </ul>
+            <div class="tab-content">
+                <div id="tab1" class="tab active">
+                    <table class="table">
+                        <tr>
+                            <th>Patient Information</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                        <tr>
+                            <td>First Name:</td>
+                            <td><input class="form-control" ng-model="serverClient.firstname" /></td>
+                        </tr>
+                        <tr>
+                            <td>Last Name:</td>
+                            <td><input class="form-control" ng-model="serverClient.lastname" /></td>
+                        </tr>
+                        <tr>
+                            <td>Phone Number:</td>
+                            <td><input class="form-control" ng-model="serverClient.phoneno" /></td>
+                        </tr>
+                        <tr>
+                            <td>Last Visit Date:</td>
+                            <td><input class="form-control" ng-model="serverClient.lvdate" /></td>
+                        </tr>
+                        <tr>
+                            <td>Status</td>
+                            <td>
+                                <select class="form-control" ng-model="serverClient.status">
+                                    <option>Active</option>
+                                    <option>Inactive</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <button class="btn btn-primary" ng-click="create()" id="add">Create Record</button>
+                               <!-- <button class="btn btn-primary" ng-click="update()" id="update">Update</button>-->
+                            </td>
+                        </tr>
+                        <tr>    
+                            <td colspan="2"><h3>{{successTextAlert}}</h3></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div id="tab2" class="tab">
+                    <table class="table">
+                        <tr>
+                            <td><b>Search with first name:</b></td>
+                            <td><input ng-model="query" class="form-control"/> </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                Sort by:
+                            </td>
+                            <td>
+                                <select ng-model="orderProp">
+                                    <option value="lastname">lastname</option>
+                                    <option value="firstname">firstname</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </table> 
+                    <table class="table">
+                        <tr ng-repeat="serverClient in serviceClients | filter:query | orderBy:orderProp">
+                            <td>
+                                <label class="active">First Name:</label> {{serverClient.firstname}}<br />
+                                <label class="active">Last Name:</label> {{serverClient.lastname}}<br />
+                                <label class="active">Phone Number:</label> {{serverClient.phoneno}}<br />
+                                <label class="active">Last Visit Date:</label>{{serverClient.lvdate}}<br />
+                                <label class="active">Status:</label>{{serverClient.status}}
+
+                            </td>
+                            <td>
+                                <button class="btn btn-danger" ng-click="delete(serverClient._id)">Remove</button>
+                                <!--<button class="btn btn-warning" ng-click="select(serverClient._id)">Select</button>-->
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div id="tab3" class="tab">
+                    <table class="table">
+                        <tr>
+                            <th>Patient Information</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                        <tr>
+                            <td>First Name:</td>
+                            <td><input class="form-control" ng-model="serverClient.firstname" /></td>
+                        </tr>
+                        <tr>
+                            <td>Last Name:</td>
+                            <td><input class="form-control" ng-model="serverClient.lastname" /></td>
+                        </tr>
+                        <tr>
+                            <td>Phone Number:</td>
+                            <td><input class="form-control" ng-model="serverClient.phoneno" /></td>
+                        </tr>
+                        <tr>
+                            <td>Last Visit Date:</td>
+                            <td><input class="form-control" ng-model="serverClient.lvdate" /></td>
+                        </tr>
+                        <tr>
+                            <td>Status</td>
+                            <td>
+                                <select class="form-control" ng-model="serverClient.status">
+                                    <option>Active</option>
+                                    <option>Inactive</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <!--<button class="btn btn-primary" ng-click="create()" id="add">Create Record</button>-->
+                                <button class="btn btn-primary" ng-click="update()" id="update">Update</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><h3>{{successTextAlert}}</h3></td>
+                        </tr>
+                    </table>
+                    <table class="table">
+                        <tr ng-repeat="serverClient in serviceClients | filter:query">
+                            <td>
+                                <label class="active">First Name:</label> {{serverClient.firstname}}<br />
+                                <label class="active">Last Name:</label> {{serverClient.lastname}}<br />
+                                <label class="active">Phone Number:</label> {{serverClient.phoneno}}<br />
+                                <label class="active">Last Visit Date:</label>{{serverClient.lvdate}}<br />
+                                <label class="active">Status:</label>{{serverClient.status}}
+
+                            </td>
+                            <td>
+                                <!--<button class="btn btn-danger" ng-click="delete(serverClient._id)">Remove</button>-->
+                                <button class="btn btn-warning" ng-click="select(serverClient._id)">Select</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+       
+        <div>
+            <h5>Copyright © 2015 by CSR technologies. All Rights Reserved.</h5>
+        </div>
+    </div>
+</body>
+</html>

@@ -30,16 +30,22 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="public\scripts\control.js" />
+    <Compile Include="public\scripts\angular.min.js" />
+    <Compile Include="public\scripts\app.js" />
+    <Compile Include="public\scripts\script.js" />
     <Compile Include="server.js" />
-    <Content Include="public\css\bootstrap.css" />
-    <Content Include="public\css\bootstrap.css.map" />
-    <Content Include="index.html" />
+    <Content Include="public\images\PatientInformation.png" />
+    <Content Include="public\styles\bootstrap.css" />
+    <Content Include="public\styles\bootstrap.css.map" />
+    <Content Include="public\index.html" />
     <Content Include="package.json" />
+    <Content Include="public\scripts\angular.min.js.map" />
+    <Content Include="public\styles\styles.css" />
     <Content Include="README.md" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="public\css\" />
+    <Folder Include="public\images\" />
+    <Folder Include="public\styles\" />
     <Folder Include="public\" />
     <Folder Include="public\scripts\" />
   </ItemGroup>

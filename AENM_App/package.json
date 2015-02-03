@@ -1,14 +1,15 @@
 {
-    "name": "AENM_App",
-    "version": "0.0.0",
-    "description": "AENM_App",
-    "main": "server.js",
-    "author": {
-        "name": "chatalas",
-        "email": ""
-    },
-    "dependencies": {
-        "express": "^4.11.1",
-        "body-parser": "^1.10.2"
-    }
+  "name": "AENM_App",
+  "version": "0.0.0",
+  "description": "AENM_App",
+  "main": "server.js",
+  "author": {
+    "name": "chatalas",
+    "email": ""
+  },
+  "dependencies": {
+    "body-parser": "^1.10.2",
+    "express": "^4.11.1",
+    "mongojs": "^0.18.1"
+  }
 }
